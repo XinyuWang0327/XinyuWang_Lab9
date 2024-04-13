@@ -1,5 +1,5 @@
 
-from encoder_decoder import password_encoder, password_decoder
+from encoder_decoder import password_encoder, password_decoder, decode_passwords
 def main():
     stored_passwords = {}  # Dictionary to store the encoded passwords
 
@@ -16,20 +16,14 @@ def main():
                 print(encoded)  # Print the error message
             else:
                 stored_passwords[password] = encoded  # Store the encoded password associated with the original
-                print(f"Your password has been encoded to {encoded} and stored.")
+                print("Your password has been encoded and stored!")
+
 
         elif option == '2':
-            # Decode password
-            # Directly display all stored passwords and their decoded form
-            if stored_passwords:
-                for original, encoded in stored_passwords.items():
-                    print(f"The encoded password {encoded} decodes to the original password {original}.")
-            else:
-                print("No passwords have been encoded yet.")
+            decode_passwords(stored_passwords)
 
         elif option == '3':
             # Quit the program
-            print("Exiting the program.")
             break
 
         else:

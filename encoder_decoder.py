@@ -1,17 +1,18 @@
 def password_encoder(password):
-    # Check if the password is 8 digits and contains only integers
     if len(password) == 8 and password.isdigit():
-        # Shift each digit up by 3 and take care of digit overflow
-        encoded = ''.join(str((int(char) + 3) % 10) for char in password)
-        return encoded
+        return ''.join(str((int(char) + 3) % 10) for char in password)
     else:
         return "Invalid password. Ensure it is an 8-digit integer."
 
 def password_decoder(encoded_password):
-    # Check if the encoded password is 8 digits and contains only integers
     if len(encoded_password) == 8 and encoded_password.isdigit():
-        # Shift each digit down by 3 and take care of digit underflow
-        decoded = ''.join(str((int(char) - 3) % 10) for char in encoded_password)
-        return decoded
+        return ''.join(str((int(char) - 3) % 10) for char in encoded_password)
     else:
         return "Invalid encoded password. Ensure it is an 8-digit integer."
+
+def decode_passwords(stored_passwords):
+    if stored_passwords:
+        for original, encoded in stored_passwords.items():
+            print(f"The encoded password {encoded} decodes to the original password {original}.")
+    else:
+        print("No passwords have been encoded yet.")
